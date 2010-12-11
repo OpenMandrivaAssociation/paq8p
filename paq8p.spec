@@ -1,7 +1,7 @@
 Summary:	High rate file compressor
 Name:		paq8p
 Version:	1.0
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	GPLv3
 Group:		Archiving/Compression
 URL:		http://www2.cs.fit.edu/~mmahoney/compression/
