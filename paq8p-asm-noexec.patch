@@ -1,0 +1,12 @@
+diff -p -up paq8p/paq7asm-x86_64.asm.noexec paq8p/paq7asm-x86_64.asm
+--- paq8p/paq7asm-x86_64.asm.noexec	2009-02-08 11:48:29.000000000 +0100
++++ paq8p/paq7asm-x86_64.asm	2009-02-08 11:47:38.000000000 +0100
+@@ -14,7 +14,7 @@
+ ; This code has not been tested in Windows.  (You would need XP Professional
+ ; 64 bit edition and a 64 bit compiler).
+ 
+-section .text
++section .text noalloc noexec nowrite progbits
+ 
+ BITS 64
+ 

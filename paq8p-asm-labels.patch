@@ -1,0 +1,46 @@
+diff -p -up paq8p/paq7asm.asm.done paq8p/paq7asm.asm
+--- paq8p/paq7asm.asm.done	2005-12-24 21:18:34.000000000 +0100
++++ paq8p/paq7asm.asm	2009-02-08 10:43:22.000000000 +0100
+@@ -53,7 +53,7 @@ dot_product:
+   paddd mm0, mm1
+   movd eax, mm0
+   emms
+-.done
++.done:
+   ret
+ 
+ ; This should work on a Pentium 4 or higher in 32-bit mode,
+@@ -85,7 +85,7 @@ dot_product_sse2:
+   psrldq xmm1, 4
+   paddd xmm0, xmm1
+   movd eax, xmm0
+-.done
++.done:
+   ret
+ 
+ 
+diff -p -up paq8p/paq7asmsse2.asm.done paq8p/paq7asmsse2.asm
+diff -p -up paq8p/paq7asmsse.asm.done paq8p/paq7asmsse.asm
+--- paq8p/paq7asmsse.asm.done	2007-01-30 23:31:36.000000000 +0100
++++ paq8p/paq7asmsse.asm	2009-02-08 10:42:08.000000000 +0100
+@@ -48,7 +48,7 @@ dot_product:
+   psrldq xmm1, 4
+   paddd xmm0, xmm1
+   movd eax, xmm0
+-.done
++.done:
+   ret
+ 
+ 
+diff -p -up paq8p/paq7asm-x86_64.asm.done paq8p/paq7asm-x86_64.asm
+--- paq8p/paq7asm-x86_64.asm.done	2007-01-19 04:59:20.000000000 +0100
++++ paq8p/paq7asm-x86_64.asm	2009-02-08 10:56:00.000000000 +0100
+@@ -47,7 +47,7 @@ dot_product:
+     psrldq xmm1, 4
+     paddd xmm0, xmm1
+     movd rax, xmm0
+-.done
++.done:
+     ret
+ 
+ ; Train n neural network weights w[n] on inputs t[n] and err.
