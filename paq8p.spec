@@ -1,7 +1,7 @@
 Summary:	High rate file compressor
 Name:		paq8p
 Version:	1.0
-Release:	%mkrel 4
+Release:	%mkrel 3
 License:	GPLv3
 Group:		Archiving/Compression
 URL:		http://www2.cs.fit.edu/~mmahoney/compression/
@@ -67,3 +67,20 @@ ln -sf %{_bindir}/paq8p_sse2 %{buildroot}%{_bindir}/paq8p
 %doc readme.txt
 %attr(0755,root,root) %{_bindir}/paq8p*
 
+
+
+%changelog
+* Mon Sep 14 2009 Thierry Vignaud <tvignaud@mandriva.com> 1.0-3mdv2010.0
++ Revision: 440482
+- rebuild
+
+  + Giuseppe Ghibò <ghibo@mandriva.com>
+    - Bump release because of building cluster stall.
+
+* Sun Feb 08 2009 Giuseppe Ghibò <ghibo@mandriva.com> 1.0-1mdv2009.1
++ Revision: 338460
+- import paq8p
+
+
+* Sat Feb 07 2009 Giuseppe Ghibò <ghibo@mandriva.com> 1.0-1mdv2009.1
+- Added Patch for nasm labels.
