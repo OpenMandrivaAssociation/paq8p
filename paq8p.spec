@@ -1,10 +1,13 @@
+%define _enable_debug_packages %{nil}
+%define debug_package %{nil}
+
 Summary:	High rate file compressor
 Name:		paq8p
 Version:	1.0
-Release:	%mkrel 3
-License:	GPLv3
+Release:	4
+License:	GPLv3+
 Group:		Archiving/Compression
-URL:		http://www2.cs.fit.edu/~mmahoney/compression/
+Url:		http://www2.cs.fit.edu/~mmahoney/compression/
 Source0:	http://www2.cs.fit.edu/~mmahoney/compression/paq8p.zip
 Patch0:		paq8p-asm-labels.patch
 Patch1:		paq8p-asm-noexec.patch
@@ -14,17 +17,23 @@ BuildRequires:	nasm
 %ifarch x86_64
 BuildRequires:	yasm
 %endif
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+ExclusiveArch:	%{ix86} x86_64
 
 %description
 PAQ8p is a file compressor that achieve very high compression rates at
 the expense of speed and memory.
 
-%prep 
+%files
+%doc readme.txt
+%attr(0755,root,root) %{_bindir}/paq8p*
+
+#----------------------------------------------------------------------------
+
+%prep
 %setup -q -c -n %{name}
 %patch0 -p1 -b .label
 #how to fix exec stack in yasm?
-#%patch1 -p1 -b .noexec
+# patch1 -p1 -b .noexec
 
 %build
 %ifarch %{ix86}
@@ -44,8 +53,6 @@ g++ paq8p.cpp %{optflags} -DNOASM -DUNIX -s -o paq8p_noasm
 %endif
 
 %install
-[ -n "%{buildroot}" -a "%{buildroot}" != / ] && rm -rf %{buildroot}
-
 install -d %{buildroot}%{_bindir}
 %ifarch x86_64
 install -m 0755 paq8p %{buildroot}%{_bindir}/
@@ -59,28 +66,3 @@ install -m 0755 paq8p_sse2 %{buildroot}%{_bindir}/
 ln -sf %{_bindir}/paq8p_sse2 %{buildroot}%{_bindir}/paq8p
 %endif
 
-%clean
-[ -n "%{buildroot}" -a "%{buildroot}" != / ] && rm -rf %{buildroot}
-
-%files
-%defattr(-,root,root)
-%doc readme.txt
-%attr(0755,root,root) %{_bindir}/paq8p*
-
-
-
-%changelog
-* Mon Sep 14 2009 Thierry Vignaud <tvignaud@mandriva.com> 1.0-3mdv2010.0
-+ Revision: 440482
-- rebuild
-
-  + Giuseppe Ghibò <ghibo@mandriva.com>
-    - Bump release because of building cluster stall.
-
-* Sun Feb 08 2009 Giuseppe Ghibò <ghibo@mandriva.com> 1.0-1mdv2009.1
-+ Revision: 338460
-- import paq8p
-
-
-* Sat Feb 07 2009 Giuseppe Ghibò <ghibo@mandriva.com> 1.0-1mdv2009.1
-- Added Patch for nasm labels.
