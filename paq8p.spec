@@ -7,7 +7,7 @@ Version:	1.0
 Release:	5
 License:	GPLv3+
 Group:		Archiving/Compression
-Url:		http://www2.cs.fit.edu/~mmahoney/compression/
+Url:		https://www2.cs.fit.edu/~mmahoney/compression/
 Source0:	http://www2.cs.fit.edu/~mmahoney/compression/paq8p.zip
 Patch0:		paq8p-asm-labels.patch
 Patch1:		paq8p-asm-noexec.patch
